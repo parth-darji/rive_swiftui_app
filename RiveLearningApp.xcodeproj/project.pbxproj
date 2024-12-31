@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		34CE31692D23C8E400DF4947 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 34CE31682D23C8E400DF4947 /* RiveRuntime */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3409D02C2D22CD36002386AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +33,22 @@
 		3409D0352D22CD36002386AD /* RiveLearningAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiveLearningAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		346278E62D251D5400AF0C5E /* Exceptions for "RiveLearningApp" folder in "RiveLearningApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3409D01A2D22CD35002386AD /* RiveLearningApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3409D01D2D22CD35002386AD /* RiveLearningApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				346278E62D251D5400AF0C5E /* Exceptions for "RiveLearningApp" folder in "RiveLearningApp" target */,
+			);
 			path = RiveLearningApp;
 			sourceTree = "<group>";
 		};
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CE31692D23C8E400DF4947 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +96,7 @@
 				3409D01D2D22CD35002386AD /* RiveLearningApp */,
 				3409D02E2D22CD36002386AD /* RiveLearningAppTests */,
 				3409D0382D22CD36002386AD /* RiveLearningAppUITests */,
+				34CE31672D23C8E400DF4947 /* Frameworks */,
 				3409D01C2D22CD35002386AD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +109,13 @@
 				3409D0352D22CD36002386AD /* RiveLearningAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		34CE31672D23C8E400DF4947 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +138,7 @@
 			);
 			name = RiveLearningApp;
 			packageProductDependencies = (
+				34CE31682D23C8E400DF4947 /* RiveRuntime */,
 			);
 			productName = RiveLearningApp;
 			productReference = 3409D01B2D22CD35002386AD /* RiveLearningApp.app */;
@@ -195,6 +222,9 @@
 			);
 			mainGroup = 3409D0122D22CD35002386AD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3409D05C2D22CE69002386AD /* XCRemoteSwiftPackageReference "rive-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3409D01C2D22CD35002386AD /* Products */;
 			projectDirPath = "";
@@ -399,6 +429,7 @@
 				DEVELOPMENT_TEAM = YZ8S4FP7UW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RiveLearningApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +459,7 @@
 				DEVELOPMENT_TEAM = YZ8S4FP7UW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RiveLearningApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +590,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3409D05C2D22CE69002386AD /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		34CE31682D23C8E400DF4947 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3409D05C2D22CE69002386AD /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3409D0132D22CD35002386AD /* Project object */;
 }
