@@ -17,6 +17,7 @@ struct SignInView: View {
         Text("Sign up with Email, Apple or Google")
             .customFont(.subheadline)
             .foregroundColor(.secondary)
+        Image("Logo Email")
     }
 }
 
