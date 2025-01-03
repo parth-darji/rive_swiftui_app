@@ -13,6 +13,29 @@ struct SignInView: View {
     @State var password: String = ""
     @State var isLoading: Bool = false
     let check = RiveViewModel(fileName: "check", stateMachineName: "State Machine 1")
+    let confetti = RiveViewModel(fileName: "confetti", stateMachineName: "State Machine 1")
+    
+    func login() {
+        isLoading = true
+        
+        if email == "" || password == "" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                check.triggerInput("Error")
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                isLoading = false
+            }
+            return;
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            check.triggerInput("Check")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            isLoading = false
+            confetti.triggerInput("Trigger explosion")
+        }
+    }
     
     var body: some View {
         VStack(spacing: 24) {
@@ -38,10 +61,7 @@ struct SignInView: View {
             }
             
             Button {
-                isLoading = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                    check.triggerInput("Check")
-                }
+               login()
             } label: {
                 Label("Sign In", systemImage: "arrow.right")
                     .customFont(.headline)
@@ -90,6 +110,9 @@ struct SignInView: View {
                         .frame(width: 100, height: 100)
                         .allowsHitTesting(false)
                 }
+                confetti.view()
+                    .scaleEffect(3)
+                    .allowsHitTesting(false)
             }
            
         )
