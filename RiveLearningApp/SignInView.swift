@@ -31,13 +31,31 @@ struct SignInView: View {
                     .customFont(.subheadline)
                     .foregroundColor(.secondary)
                 SecureField("", text: $password)
-                    .customTextField()
+                    .customTextField(image: Image("Icon Lock"))
             }
             
-            Divider()
+            Label("Sign In", systemImage: "arrow.right")
+                .customFont(.headline)
+                .padding(20)
+                .frame(maxWidth: .infinity)
+                .background(Color(hex: "F77D8E"))
+                .foregroundColor(.white)
+                .cornerRadius(20, corners: [.topRight, .bottomLeft, .bottomRight])
+                .cornerRadius(8, corners: [.topLeft])
+                .shadow(color: Color(hex: "F77D8E").opacity(0.5), radius: 20, x: 0, y: 10)
+            
+            HStack {
+                Rectangle().frame(height: 1).opacity(0.1)
+                Text("OR")
+                    .customFont(.subheadline2)
+                    .foregroundColor(.black.opacity(0.3))
+                Rectangle().frame(height: 1).opacity(0.1)
+            }
+            
             Text("Sign up with Email, Apple or Google")
                 .customFont(.subheadline)
                 .foregroundColor(.secondary)
+            
             HStack {
                 Image("Logo Email")
                 Spacer()
