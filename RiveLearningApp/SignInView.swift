@@ -12,28 +12,31 @@ struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var isLoading: Bool = false
+    @Binding var showModal: Bool
     let check = RiveViewModel(fileName: "check", stateMachineName: "State Machine 1")
     let confetti = RiveViewModel(fileName: "confetti", stateMachineName: "State Machine 1")
     
     func login() {
         isLoading = true
         
-        if email == "" || password == "" {
+        if email != "" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                check.triggerInput("Check")
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                isLoading = false
+                confetti.triggerInput("Trigger explosion")
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4){
+                showModal = false
+            }
+        } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 check.triggerInput("Error")
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                 isLoading = false
             }
-            return;
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            check.triggerInput("Check")
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
-            isLoading = false
-            confetti.triggerInput("Trigger explosion")
         }
     }
     
@@ -61,7 +64,7 @@ struct SignInView: View {
             }
             
             Button {
-               login()
+                login()
             } label: {
                 Label("Sign In", systemImage: "arrow.right")
                     .customFont(.headline)
@@ -105,7 +108,7 @@ struct SignInView: View {
         .padding()
         .overlay(
             ZStack {
-                if(isLoading){
+                if isLoading {
                     check.view()
                         .frame(width: 100, height: 100)
                         .allowsHitTesting(false)
@@ -114,11 +117,11 @@ struct SignInView: View {
                     .scaleEffect(3)
                     .allowsHitTesting(false)
             }
-           
+            
         )
     }
 }
 
 #Preview {
-    SignInView()
+    SignInView(showModal: .constant(true))
 }
