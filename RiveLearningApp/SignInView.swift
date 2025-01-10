@@ -28,7 +28,9 @@ struct SignInView: View {
                 confetti.triggerInput("Trigger explosion")
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 4){
-                showModal = false
+                withAnimation {
+                    showModal = false
+                }
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
