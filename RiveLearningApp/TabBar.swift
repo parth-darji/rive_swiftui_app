@@ -13,13 +13,15 @@ struct TabBar: View {
     
     var body: some View {
         HStack {
-            Button {
-                icon.setInput("active", value: true)
-                DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                    icon.setInput("active", value: false)
+            ForEach(tabItems) { item in
+                Button {
+                    item.icon.setInput("active", value: true)
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+                        item.icon.setInput("active", value: false)
+                    }
+                } label: {
+                    item.icon.view()
                 }
-            } label: {
-                icon.view()
             }
         }
         .background(Color("Background 2")
