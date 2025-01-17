@@ -9,6 +9,7 @@ import SwiftUI
 import RiveRuntime
 
 struct TabBar: View {
+    @State var selectedTab: Tab = .chat
     let icon = RiveViewModel(fileName: "icons", stateMachineName: "CHAT_Interactivity", artboardName: "CHAT")
     
     var body: some View {
@@ -37,9 +38,22 @@ struct TabBar: View {
                 DispatchQueue.main.asyncAfter(deadline: .now()+1){
                     item.icon.setInput("active", value: false)
                 }
+                withAnimation {
+                    selectedTab = item.tab
+                }
             } label: {
                 item.icon.view()
                     .frame(height: 36)
+                    .opacity(selectedTab == item.tab ? 1 : 0.5)
+                    .background(
+                        VStack {
+                            RoundedRectangle(cornerRadius: 2)
+                                .frame(width: selectedTab == item.tab ? 20 : 0, height: 4)
+                                .offset(y: -4)
+                                .opacity(selectedTab == item.tab ? 1 : 0)
+                            Spacer()
+                        }
+                    )
             }
         }
     }
