@@ -48,6 +48,7 @@ struct TabBar: View {
                     .background(
                         VStack {
                             RoundedRectangle(cornerRadius: 2)
+                                .fill(Color.accentColor)
                                 .frame(width: selectedTab == item.tab ? 20 : 0, height: 4)
                                 .offset(y: -4)
                                 .opacity(selectedTab == item.tab ? 1 : 0)
