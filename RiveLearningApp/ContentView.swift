@@ -12,7 +12,18 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Text("Chat")
+            switch selectedTab {
+            case .chat:
+                Text("Chat")
+            case .search:
+                Text("Search")
+            case .timer:
+                Text("Timer")
+            case .bell:
+                Text("Bell")
+            case .user:
+                Text("User")
+            }
             TabBar()
         }
     
