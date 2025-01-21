@@ -9,6 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
+        ZStack {
+            Color("Background").ignoresSafeArea()
+            
+            ScrollView {
+                content
+            }
+        }
+    }
+    
+    var content: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Courses")
                 .customFont(.largeTitle)
