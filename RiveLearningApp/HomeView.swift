@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             Text("Courses")
                 .customFont(.largeTitle)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -24,6 +24,17 @@ struct HomeView: View {
                 .padding(20)
                 .padding(.bottom, 10)
             }
+            
+            Text("Recent")
+                .customFont(.title3)
+                .padding(.horizontal, 20)
+            
+            VStack(spacing: 20) {
+                ForEach(courseSections) { section in
+                    HCard(section: section)
+                }
+            }
+            .padding(20)
         }
     }
 }
