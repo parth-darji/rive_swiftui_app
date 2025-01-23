@@ -41,31 +41,7 @@ struct SideMenu: View {
                         .frame(height: 1)
                         .opacity(0.1)
                         .padding(.horizontal)
-                    HStack(spacing: 14) {
-                        item.icon.view()
-                            .frame(width: 32, height: 32)
-                            .opacity(0.6)
-                        Text(item.text)
-                            .customFont(.headline)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(.blue)
-                            .frame(maxWidth: selectedMenu == item.menu ? .infinity : 0)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    )
-                    .background(Color("Background 2"))
-                    .onTapGesture {
-                        item.icon.setInput("active", value: true)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            item.icon.setInput("active", value: false)
-                        }
-                        withAnimation {
-                            selectedMenu = item.menu
-                        }
-                    }
+                    MenuRow(item: item, selectedMenu: $selectedMenu)
                 }
             }
             .padding(8)
