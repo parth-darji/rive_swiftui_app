@@ -77,8 +77,15 @@ struct ContentView: View {
                     withAnimation(.spring(response: 0.5, dampingFraction: 0.7)){
                         isOpen.toggle()
                     }
-                   
                 }
+                .onChange(of: isOpen){ newValue in
+                    if newValue {
+                        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+                    } else {
+                        UIApplication.shared.setStatusBarStyle(.darkContent, animated: true)
+                    }
+                }
+            
             TabBar()
                 .offset(y: isOpen ? 300 : 0)
                 .offset(y: show ? 200 : 0)
