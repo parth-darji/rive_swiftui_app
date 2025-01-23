@@ -9,6 +9,7 @@ import SwiftUI
 import RiveRuntime
 
 struct SideMenu: View {
+    @State var selectedMenu: SelectedMenu = .home
     var body: some View {
         VStack {
             HStack {
@@ -49,10 +50,20 @@ struct SideMenu: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(.blue)
+                            .frame(maxWidth: selectedMenu == item.menu ? .infinity : 0)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    )
+                    .background(Color("Background 2"))
                     .onTapGesture {
                         item.icon.setInput("active", value: true)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             item.icon.setInput("active", value: false)
+                        }
+                        withAnimation {
+                            selectedMenu = item.menu
                         }
                     }
                 }
@@ -77,12 +88,22 @@ struct MenuItem: Identifiable {
     var id = UUID()
     var text: String
     var icon: RiveViewModel
+    var menu: SelectedMenu
 }
 
 var menuItems = [
-    MenuItem(text: "Home", icon: RiveViewModel(fileName: "icons", stateMachineName: "HOME_interactivity", artboardName: "HOME")),
-    MenuItem(text: "Search", icon: RiveViewModel(fileName: "icons", stateMachineName: "SEARCH_Interactivity", artboardName: "SEARCH")),
-    MenuItem(text: "Favorites", icon: RiveViewModel(fileName: "icons", stateMachineName: "STAR_Interactivity", artboardName: "LIKE/STAR")),
-    MenuItem(text: "Help", icon: RiveViewModel(fileName: "icons", stateMachineName: "CHAT_Interactivity", artboardName: "CHAT")),
-    
+    MenuItem(text: "Home", icon: RiveViewModel(fileName: "icons", stateMachineName: "HOME_interactivity", artboardName: "HOME"), menu: .home),
+    MenuItem(text: "Search", icon: RiveViewModel(fileName: "icons", stateMachineName: "SEARCH_Interactivity", artboardName: "SEARCH"), menu: .search),
+    MenuItem(text: "Favorites", icon: RiveViewModel(fileName: "icons", stateMachineName: "STAR_Interactivity", artboardName: "LIKE/STAR"), menu: .favorites),
+    MenuItem(text: "Help", icon: RiveViewModel(fileName: "icons", stateMachineName: "CHAT_Interactivity", artboardName: "CHAT"), menu: .help),
 ]
+
+enum SelectedMenu: String {
+    case home
+    case search
+    case favorites
+    case help
+    case history
+    case notifications
+    case darkMode
+}
