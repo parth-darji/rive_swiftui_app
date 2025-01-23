@@ -92,7 +92,7 @@ struct ContentView: View {
                 .offset(y: -24)
                 .background(
                     LinearGradient(colors: [Color("Background").opacity(0), Color("Background")], startPoint: .top, endPoint: .bottom)
-                        .frame(height: 150)
+                        .frame(height: isOpen ? 0 : 150)
                         .frame(maxHeight: .infinity, alignment: .bottom)
                         .allowsHitTesting(false)
                 )
@@ -110,7 +110,6 @@ struct ContentView: View {
                     .zIndex(1)
             }
         }
-        
     }
 }
 
