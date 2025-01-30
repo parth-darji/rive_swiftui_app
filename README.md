@@ -4,7 +4,7 @@ This is a SwiftUI-based app that integrates Rive animations, providing an engagi
 
 ## Demo
 
-[demo.gif]
+![Demo of SwiftUI App](demo.gif)
 
 ## Features
 
